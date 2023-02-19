@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /home/segu/personalcontainers/prowlarr/data:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+networks:
+  default:
+    name: media-network
+    external: true

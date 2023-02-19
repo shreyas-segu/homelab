@@ -1,0 +1,22 @@
+version: "2.1"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - AUTO_UPDATE=true #optional
+      - "RUN_OPTS=<run options here>" #optional
+    volumes:
+      - /home/segu/personalcontainers/jackett/data:/config
+      - /home/segu/media/downloads:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+networks:
+  default:
+    name: media-network
+    external: true

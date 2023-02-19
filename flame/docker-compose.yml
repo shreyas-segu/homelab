@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  flame:
+    image: pawelmalak/flame
+    container_name: flame
+    volumes:
+      - /home/segu/personalcontainers/flame/data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
+    ports:
+      - 5005:5005
+    environment:
+      - PASSWORD=admin
+    restart: unless-stopped
+
+networks:
+  default:
+    name: media-network
+    external: true

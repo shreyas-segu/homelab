@@ -1,0 +1,23 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - WEBUI_PORT=1010
+    volumes:
+      - /home/segu/personalcontainers/qbittorrent/data:/config
+      - /home/segu/media/downloads:/downloads
+    ports:
+      - 1010:1010
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+networks:
+  default:
+    name: media-network
+    external: true

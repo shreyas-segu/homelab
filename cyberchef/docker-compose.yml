@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  cyberchef:
+    ports:
+      - '1111:8000'
+    image: mpepping/cyberchef
